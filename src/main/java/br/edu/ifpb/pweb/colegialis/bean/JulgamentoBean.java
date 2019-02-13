@@ -12,9 +12,6 @@ public class JulgamentoBean {
 	@ManagedProperty(value="#{reunioesbean}")
 	private ReunioesBean reunioes; 
 	private int reuniaoAberta; 
-	
-	
-	
-	
+
 	
 }

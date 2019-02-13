@@ -17,7 +17,7 @@ public class ReunioesBean {
 	
 
 	private ArrayList<Reuniao> reunioes;
-	
+	String mensagem = "Mensagem";
 	
 	@PostConstruct
 	public void init(){
@@ -57,14 +57,24 @@ public class ReunioesBean {
 		this.reunioes.add(r1);
 	}
 	
-
 	public ArrayList<Reuniao> getReunioes() {
-		return reunioes;
+		return this.reunioes;
 	}
 
 	public void setReunioes(ArrayList<Reuniao> reunioes) {
 		this.reunioes = reunioes;
 	}
 	
+	public String getMensagem() {
+		return mensagem;
+	}
+
+	public void setMensagem(String mensagem) {
+		this.mensagem = mensagem;
+	}
+
+	public String abrirReuniao(String id) {
+		return "/reuniao.xhtml?faces-redirect=true&id="+id;
+	}
 	
 }

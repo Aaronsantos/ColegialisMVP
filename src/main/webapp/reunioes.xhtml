@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Colegialis</title>
+</h:head>
+<h:body>
+	<p:dataTable var="reuniao" value="#{reunioesbean.reunioes}">
+		<p:column headerText="Id">
+			<h:outputText value="#{reuniao.id}" />
+		</p:column>
+		<p:column headerText="Data">
+			<h:outputText value="#{reuniao.data}" />
+		</p:column>
+		<p:column headerText="Coordenador">
+			<h:outputText value="#{reuniao.coordenador.nome}" />
+		</p:column>
+		<p:column headerText="Colegiado">
+			<h:dataTable var="colegiado" value="#{reuniao.colegiado}">
+				<p:column>
+					<h:outputText value="#{colegiado.nome}" />
+				</p:column>
+			</h:dataTable>
+		</p:column>
+		<p:column headerText="Descrição">
+			<h:outputText value="#{reuniao.descricao}" />
+		</p:column>
+		<p:column headerText="Pauta">
+			<h:dataTable var="pauta" value="#{reuniao.pauta}">
+				<p:column>
+					<h:outputText value="#{pauta.descricao}" />
+				</p:column>
+			</h:dataTable>
+		</p:column>
+		<p:column headerText="Ações">
+		<h:form name="f">
+			<h:commandButton value="Abrir Reunião" action="#{reunioesbean.abrirReuniao(reuniao.id)}"/>
+		</h:form>
+		</p:column>
+	</p:dataTable>
+
+</h:body>
+</html>
