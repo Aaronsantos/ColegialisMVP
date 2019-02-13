@@ -8,7 +8,7 @@
 	xmlns:p="http://primefaces.org/ui">
 
 <h:head>
-	<title>Colegialis</title>
+	<title>Collegialis IFPB SI/REDES</title>
 </h:head>
 <h:body>
 	<p:dataTable var="reuniao" value="#{reunioesbean.reunioes}">
@@ -38,12 +38,17 @@
 				</p:column>
 			</h:dataTable>
 		</p:column>
+		<p:column headerText="Status">
+			<h:outputText value="#{reuniao.statusReuniao}" />
+		</p:column>
 		<p:column headerText="Ações">
-		<h:form name="f">
-			<h:commandButton value="Abrir Reunião" action="#{reunioesbean.abrirReuniao(reuniao.id)}"/>
+		<h:form name="f" rendered="#{reuniao.statusReuniao == 'PLANEJADA'}">
+			<h:commandButton value="Iniciar Reunião" action="#{reunioesbean.abrirReuniao(reuniao.id)}"/>
+		</h:form>
+		<h:form name="f" rendered="#{reuniao.statusReuniao == 'ENCERRADA'}">
+			<h:commandButton value="Ver Resultado" action="#{reunioesbean.abrirReuniao(reuniao.id)}"/>
 		</h:form>
 		</p:column>
 	</p:dataTable>
-
 </h:body>
 </html>

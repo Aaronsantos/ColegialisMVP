@@ -24,7 +24,16 @@ public class Reuniao {
 	private List<Professor> colegiado;
 	private String descricao;
 	private List<Processo> pauta;
+	private Status statusReuniao;
 	
+	public Status getStatusReuniao() {
+		return statusReuniao;
+	}
+
+	public void setStatusReuniao(Status statusReuniao) {
+		this.statusReuniao = statusReuniao;
+	}
+
 	@Override
 	public String toString() {
 		return "Reuniao [id=" + id + ", data=" + data + ", coordenador=" + coordenador + ", colegiado=" + colegiado
@@ -80,7 +89,7 @@ public class Reuniao {
 	}
 
 	public Reuniao(String id, Date data, Professor coordenador, List<Professor> colegiado, List<Processo> pauta,
-			String descricao) {
+			String descricao, Status statusReuniao) {
 		super();
 		this.id = id;
 		this.data = data;
@@ -88,6 +97,7 @@ public class Reuniao {
 		this.colegiado = colegiado;
 		this.pauta = pauta;
 		this.descricao = descricao;
+		this.statusReuniao = statusReuniao;
 	}
 
 	

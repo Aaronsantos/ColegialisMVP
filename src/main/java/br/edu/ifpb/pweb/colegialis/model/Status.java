@@ -2,8 +2,7 @@ package br.edu.ifpb.pweb.colegialis.model;
 
 public enum Status {
 	ENCERRADA("Encerrada"),
-	PLANEJADA("Planejada"),
-	ABERTA("Aberta");
+	PLANEJADA("Planejada");
 	
 	private String texto;
 	

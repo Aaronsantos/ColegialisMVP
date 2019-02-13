@@ -4,10 +4,53 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
-	xmlns:f="http://xmlns.jcp.org/jsf/core">
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
 
-<h:outputText value="#{param['id']}"/>
+<h:head>
+	<title>Collegialis IFPB SI/REDES</title>
+</h:head>
+<h:body>
 
+<h:outputText value="#{julgamentobean.reuniao.id}" />
 <h:outputText value="#{julgamentobean.reuniao.data}" />
+<h:outputText value="#{julgamentobean.reuniao.coordenador.nome}" />
+<h:outputText value="#{julgamentobean.reuniao.descricao}" />
 
+<p:dataTable var="processo" value="#{julgamentobean.reuniao.pauta}">
+	<p:column headerText="Id">
+		<h:outputText value="#{processo.id}" />
+	</p:column>	
+	<p:column headerText="Descrição">
+		<h:outputText value="#{processo.descricao}" />
+	</p:column>
+	<p:column headerText="Relator">
+		<h:outputText value="#{processo.relator.nome}" />
+	</p:column>
+	<p:column headerText="Votos a favor">
+		<h:outputText value="#{processo.votosFavor}" />
+	</p:column>
+	<p:column headerText="Votos contra">
+		<h:outputText value="#{processo.votosContra}" />
+	</p:column>
+	<p:column headerText="Resultado">
+		<h:outputText rendered="#{processo.resultado == true}" value="DEFERIDA" />
+		<h:outputText rendered="#{processo.resultado == false}" value="INDEFERIDA" />
+	</p:column>
+	<p:column headerText="Votação" rendered="#{julgamentobean.reuniao.statusReuniao == 'PLANEJADA'}">
+		<h:form>
+			<h:commandButton value="A favor" action="#{julgamentobean.votoFavor(processo.id)}" />
+		</h:form>
+		<h:form>
+			<h:commandButton value="Contra" action="#{julgamentobean.votoContra(processo.id)}" />
+		</h:form>
+	</p:column>
+</p:dataTable>
+<h:form rendered="#{julgamentobean.reuniao.statusReuniao == 'PLANEJADA'}">
+	<h:commandButton value="Concluir Reunião" action="#{julgamentobean.concluir}" />
+</h:form>
+<h:form rendered="#{julgamentobean.reuniao.statusReuniao == 'ENCERRADA'}">
+	<h:commandButton value="Voltar" action="reunioes?faces-redirect=true" />
+</h:form>
+</h:body>
 </html>
