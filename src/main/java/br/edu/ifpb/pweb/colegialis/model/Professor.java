@@ -23,6 +23,12 @@ public class Professor {
 	public void setCoordenador(Boolean coordenador) {
 		this.coordenador = coordenador;
 	}
+	public Professor(String nome, String curso, Boolean coordenador) {
+		super();
+		this.nome = nome;
+		this.curso = curso;
+		this.coordenador = coordenador;
+	}
 	
 	
 }

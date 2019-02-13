@@ -1,14 +1,33 @@
 package br.edu.ifpb.pweb.colegialis.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+
 public class Processo {
 	
+	
 	private String descricao;
+	
 	private Professor relator;
 	private Boolean decisaoRelator;
 	private Boolean resultado;
 	private int votosFavor;
 	private int votosContra;
 	
+	public Processo( String descricao, Professor relator, Boolean decisaoRelator, Boolean resultado,
+			int votosFavor, int votosContra) {
+		super();
+		this.descricao = descricao;
+		this.relator = relator;
+		this.decisaoRelator = decisaoRelator;
+		this.resultado = resultado;
+		this.votosFavor = votosFavor;
+		this.votosContra = votosContra;
+	}
+
 	public void addVotoFavor() {
 		
 		this.votosFavor++; 
