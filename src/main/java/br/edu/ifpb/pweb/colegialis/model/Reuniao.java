@@ -24,6 +24,7 @@ public class Reuniao {
 	private List<Professor> colegiado;
 	private String descricao;
 	private List<Processo> pauta;
+	
 	@Override
 	public String toString() {
 		return "Reuniao [id=" + id + ", data=" + data + ", coordenador=" + coordenador + ", colegiado=" + colegiado

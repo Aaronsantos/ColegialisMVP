@@ -77,4 +77,14 @@ public class ReunioesBean {
 		return "/reuniao.xhtml?faces-redirect=true&id="+id;
 	}
 	
+	public Reuniao reuniaoById(String id) {
+		
+		for(Reuniao reuniao : this.reunioes) {
+			if(reuniao.getId().equals(id))
+				return reuniao; 
+		}
+		return null; 
+		
+	}
+	
 }
